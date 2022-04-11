@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-import json
 from data import *
 from fastapi import HTTPException
 from bot import *
