@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            body
+            {
+                background: rgb(141,106,240);
+                background: linear-gradient(90deg, rgba(141,106,240,1) 2%, rgba(148,187,233,1) 94%);
+            }
+
+            h1, h2, h3, h4, h5, h6, p, label, span, text, input, button
+            {
+                margin: 0;
+                font-family: system-ui;
+                color: #457cad;
+            }
+
+
+            .frame-one
+            {
+                background-color: #ffffffed;
+                width: 40vw;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0px 5px 35px 2px #eee;
+                border: solid 1px #eee;
+                position: absolute;
+                right: 0;
+                margin: 10vh 5vw;
+                height: 75vh;
+                display: inline-block;
+            }
+
+            .div-login
+            {
+                display: block;
+                height: auto;
+                max-height: 62%;
+
+            }
+
+            .div-login img
+            {
+                width: 10vw;
+                max-width: 200px;
+                border-radius: 100%;
+                display: block;
+                position: relative;
+                margin: auto;
+                margin-bottom: 20px;
+
+            }
+
+            @keyframes slide-in-fwd-center 
+            {
+                0% 
+                {
+                    transform: translateZ(-1400px);
+                    opacity: 0;
+                }
+                100% 
+                {
+                    transform: translateZ(0);
+                    opacity: 1;
+                }
+            }
+
+            .div-action
+            {
+                display: none;
+                height: auto;
+                animation: slide-in-fwd-center 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                max-height: 100%;
+                overflow: auto;
+            }
+
+
+            @media only screen and (max-width: 450px) 
+            {
+                .frame-one
+                {
+                    background-color: #ffffff;
+                    width: 100vw;
+                    padding: 0px;
+                    position: absolute;
+                    right: 0;
+                    height: 100vh;
+                    display: inline-block;
+                    margin: 0;
+                }
+
+                .frame-one img
+                {
+                    width: 10rem;
+                    max-width: 200px;
+                    border-radius: 100%;
+                    display: block;
+                    position: relative;
+                    margin: auto;
+                }
+
+                body
+                {
+                    background-color: #fff !important;
+                }
+            }
+
+            .title
+            {
+                text-align: center;
+                font-size: 35px;
+                font-weight: bold;
+            }
+
+            .subtitle
+            {
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .barra
+            {
+                height: 10px;
+                background: linear-gradient(to left, #8f6B29, #FDE08D, #DF9F28);
+                border-radius: 20px;
+                margin: 20px auto;
+            }
+
+            .login_input
+            {
+                display: block;
+                width: calc(100% - 10px);
+                margin: 20px auto;
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid #457cad;
+                color: #457cad;
+                height: 35px;
+                font-size: 15px;
+            }
+
+            .login_input:focus
+            {
+                outline: none;
+                box-shadow: -10px 0px 13px -7px #000000b0, 10px 0px 13px -7px #000000a8, 5px 5px 15px 5px rgb(0 0 0 / 0%);            
+                border-radius: 15px;
+                padding: 0 7px;
+            }
+
+            .login_button
+            {
+                display: block;
+                width: calc(100% - 10px);
+                margin: 20px auto;
+                font-weight: bold;
+                background: linear-gradient(to left, #8f6B29, #FDE08D, #DF9F28);
+                border-radius: 20px;
+                height: 35px;
+                color: #fff;
+                border: none;
+                font-weight: bold;
+            }
+
+            .login_button:active
+            {
+                border: 1px solid #000;
+                font-size: 15px;
+            }
+
+            .header-item
+            {
+                background: #457cad;
+                width: calc((100% / 3) + -3px);
+                text-align: center;
+                padding: 10px;
+                border: 1px #fff solid;
+                border-radius: 7px;
+                color: #fff;
+            }
+
+            .header-item:active
+            {
+                border: 1px solid #000;
+            }
+
+            .content-action
+            {
+                display: none;
+            }
+
+            .btn-int
+            {
+                font-weight: bold;
+            }
+
+            .btn-int:hover
+            {
+                font-weight: bold;
+                color: #DF9F28;
+                cursor: pointer;
+            }
+
+            .btn-int:active
+            {
+                font-weight: bold;
+                color: #DF9F28;
+                outline: none;
+            }
+
+            .frame-aux
+            {
+                background-color: #ffffffed;
+                width: 40vw;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0px 5px 35px 2px #eee;
+                border: solid 1px #eee;
+                position: absolute;
+                right: 0;
+                margin: 10vh 5vw;
+                height: 75vh;
+                display: inline-block;
+            }
+            
+            .normal_input
+            {
+                display: block;
+                width: calc(100% - 10px);
+                margin: 20px auto;
+                background-color: transparent;
+                border: 1px solid #457cad;
+                color: #457cad;
+                height: 35px;
+                font-size: 15px;
+                border-radius: 5px;
+                padding-left: 10px;
+            }
+
+            .normal_input:focus
+            {
+                outline: none;
+            }
+
+            .normal_checkbox
+            {
+                display: inline-block;
+                color: #000;
+                margin: 10px auto;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <section id="action-frame" class="frame-one"> 
+            <div id="div-login" class="div-login">
+                <img src="https://scontent.fssa21-1.fna.fbcdn.net/v/t1.18169-9/11181191_1463564820625145_3038718580246880761_n.png?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeG7E37BOAnLypACv_bTSk4mZWqCseOxuaJlaoKx47G5onmDv0jAJXqvgyRK8tgtNCT6hFebHJsLTINEeyRIKsD3&_nc_ohc=d5BY8ZiX7IUAX9_ij5g&_nc_ht=scontent.fssa21-1.fna&oh=00_AT_lECeRXbDkCxqmgzJ25iGuU9jcukf92g_emYdDUeQ5CQ&oe=6277D052" alt="">
+                <h1 class="title">BOT WHATSAPP</h1>
+                <h5 class="subtitle">Aug.˙. e Resp.˙. Loj.˙. Simb.˙. Amor e Justiça N° 59</h5>
+                <div class="barra"></div>
+                <form id="form-login">
+                    <input placeholder="Digite seu nome de usuário" name="username" type="text" id="frm_username" class="login_input">
+                    <input placeholder="Digite sua senha" name="password" type="password" id="frm_password" class="login_input">
+                    <button type="button" class="login_button" onclick="login()">Login</button>
+                </form>
+                
+            </div>
+
+            <div id="div-action" class="div-action">
+                <button type="button" class="header-item" onclick="loadFeature('m')">Mensagens</button>
+                <button type="button" class="header-item" onclick="loadFeature('u')">Usuários</button>
+                <button type="button" class="header-item" onclick="loadFeature('c')">Contatos</button>
+                
+                <div style="margin: 5px auto;" class="barra"></div>
+
+                <div id="div-int-mensagens" class="content-action"> 
+                    <h1>Mensagens Cadastradas <span onclick="openNewFrame('m')" class="btn-int">+</span></h1>
+                    <hr>
+                    <div id="div-data-mensagens" class="div-data">
+                    </div>
+                </div>
+
+                <div id="div-int-contatos" class="content-action">
+                    <h1>Contatos Cadastrados <span onclick="openNewFrame('c')" type="button" class="btn-int">+</span></h1>
+                    <hr>
+                    <div id="div-data-contatos" class="div-data">
+                    </div>
+                </div>
+
+                <div id="div-int-usuarios" class="content-action">
+                    <h1>Usuários Cadastrados <span onclick="openNewFrame('u')" type="button" class="btn-int">+</span></h1>
+                    <hr>
+                    <div id="div-data-usuarios" class="div-data">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            async function init()
+            {
+                if(window.localStorage.getItem("ajsessao"))
+                {
+                    document.getElementById('action-frame').style.position = "initial";
+                    trocarVisao()
+                    loadFeature('c')
+                    loadFeature('u')
+                    loadFeature('m')
+                }
+            }
+        
+            async function loadFeature(mod)
+            {
+                if(document.getElementById('frame-aux') != null) document.getElementById('frame-aux').remove();
+                switch(mod)
+                {
+                    case 'm':
+                        document.getElementById('div-int-mensagens').style.display = "block";
+                        document.getElementById('div-int-contatos').style.display = "none";
+                        document.getElementById('div-int-usuarios').style.display = "none";
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("GET", window.location.href+'menssagens', true);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.onreadystatechange = function() 
+                        {
+                            if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                            {
+                                loadMenssagens(this.response)
+                            }
+                        };
+                        xhr.send();
+                    break;
+
+                    case 'c':
+                        document.getElementById('div-int-mensagens').style.display = "none";
+                        document.getElementById('div-int-contatos').style.display = "block";
+                        document.getElementById('div-int-usuarios').style.display = "none";
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("GET", window.location.href+'contatos', true);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.onreadystatechange = function() 
+                        {
+                            if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                            {
+                                loadContatos(this.response)
+                            }
+                        };
+                        xhr.send();
+                    break;
+
+                    case 'u':
+                        document.getElementById('div-int-mensagens').style.display = "none";
+                        document.getElementById('div-int-contatos').style.display = "none";
+                        document.getElementById('div-int-usuarios').style.display = "block";
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("GET", window.location.href+'usuarios', true);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.onreadystatechange = function() 
+                        {
+                            if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                            {
+                                loadUsuarios(this.response)
+                            }
+                        };
+                        xhr.send();
+                    break;
+                }
+            }
+
+            function login()
+            {
+                let form = document.forms['form-login'];
+                if(validForm(form))
+                {
+                    content = `{"username": "${form.elements.username.value}", "password": "${form.elements.password.value}"}`;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", window.location.href+'login', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onreadystatechange = function() 
+                    {
+                        if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                        {
+                            if(window.screen.width > 450)
+                                moveFrameAction()
+                            trocarVisao()
+                            window.localStorage.setItem("ajsessao", true)
+                            loadFeature('c')
+                            loadFeature('u')
+                            loadFeature('m')
+                        }
+                     };
+                     xhr.send(content);
+                }
+                else
+                {
+                    console.log("erro")
+                }
+            }
+
+            function validForm(form)
+            {
+                let ret = true;
+                ret = form.elements.username === ""? false : true;
+                ret = form.elements.password === ""? false : true;
+                return ret;
+            }
+
+            async function trocarVisao()
+            {
+                document.getElementById('div-action').style.display = "block";
+                document.getElementById('div-login').style.display = "none";
+            }
+
+            async function moveFrameAction()
+            {
+                
+                let frame = document.getElementById('action-frame');
+                let lim = convertPxToNumber(window.getComputedStyle(frame).getPropertyValue('width')) + convertPxToNumber(window.getComputedStyle(frame).getPropertyValue('margin-left'));
+                setInterval(()=>
+                {
+                    if(convertPxToNumber(window.getComputedStyle(frame).getPropertyValue('right')) >= lim)
+                    {
+                        frame.style.position ="static";
+                        frame.style.right = "initial";
+                        return;
+                    }
+                    frame.style.right = (convertPxToNumber(window.getComputedStyle(frame).getPropertyValue('right')) + 3) + 'px';
+                }, 1);
+                
+            }
+
+            function convertPxToNumber(pixel)
+            {
+                pixel = pixel.toString().replace('px', '')
+                return parseFloat(pixel);
+            }
+            
+            var _usuarios = [];
+            async function loadUsuarios(usuarios)
+            {
+                _usuarios = usuarios;
+                clearElement('div-data-usuarios')
+                let comp = document.getElementById('div-data-usuarios');
+                for(let item of JSON.parse(usuarios))
+                {
+                    console.log(item)
+                    let div = document.createElement("div");
+                    div.setAttribute("class", "div-data-item");
+                    div.innerHTML = `
+                                        <h4>${item.username}</h4>
+                                        <button onclick="excluirUsuario('${item.id}')">excluir</button>
+                                        <hr>
+                                    `;
+
+                    comp.appendChild(div)
+                }
+            }
+
+            var _contatos = [];
+            async function loadContatos(contatos)
+            {
+                _contatos = contatos;
+                clearElement('div-data-contatos')
+                let comp = document.getElementById('div-data-contatos');
+                for(let item of JSON.parse(contatos))
+                {
+                    console.log(item)
+                    let div = document.createElement("div");
+                    div.setAttribute("class", "div-data-item");
+                    div.innerHTML = `
+                                        <h4>${item.nome}</h4>
+                                        <h6>Telefone: ${item.telefone}</h6>
+                                        <button onclick="excluirContato('${item.id}')">excluir</button>
+                                        <hr>
+                                    `;
+
+                    comp.appendChild(div)
+                }
+            }
+
+            var _mensagens = [];
+            async function loadMenssagens(menssagens)
+            {
+                _mensagens = menssagens;
+                clearElement('div-data-mensagens');
+                let comp = document.getElementById('div-data-mensagens');
+                for(let item of JSON.parse(menssagens))
+                {
+                    let div = document.createElement("div");
+                    div.setAttribute("class", "div-data-item");
+                    div.innerHTML = `
+                                        <h4>${item.descricao}</h4>
+                                        <h6>Função: ${item.funcao}</h6>
+                                        <button onclick="excluirMenssagem('${item.id}')">excluir</button><button onclick="enviarMenssagem('${item.id}')">enviar</button>
+                                        <hr>
+                                    `;
+
+                    comp.appendChild(div)
+                }
+            }
+
+            function excluirMenssagem(id)
+            {
+                console.log("excluir "+id);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", window.location.href+'menssagens/excluir/'+id, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() 
+                {
+                    if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                    {
+                        loadFeature('m');
+                    }
+                };
+                xhr.send();
+            }
+
+            var input_bot = {"msg": "", "contatos": []};
+            function enviarMenssagem(id)
+            {
+                if(document.getElementById('frame-aux') == null)
+                {
+                    input_bot.msg = id;
+                    openNewFrame('s');
+                }
+                else
+                {
+                    let form = document.forms["form-envio-msg"];
+                    let contatos = []
+                    for(let field of form.elements)
+                    {
+                        if(field.type == "checkbox" && field.checked)
+                            contatos.push(field.value);
+                    }
+                    input_bot.contatos = contatos;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", window.location.href+'bot', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onreadystatechange = function() 
+                    {
+                        if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                        {
+                            loadFeature('m');   
+                        }
+                    };
+                    content = `{"msg": "${input_bot.msg}", "contatos": "${input_bot.contatos}"}`;
+                    xhr.send(content);
+                    }
+            }
+
+            function openNewFrame(feature)
+            {
+                let section = document.createElement("section");
+                section.setAttribute("class", "frame-aux");
+                section.setAttribute("id", "frame-aux");
+                switch(feature)
+                {
+                    case 'm':
+                        section.innerHTML = `
+                                                <h1 style="height: 39px;">Cadastrando uma nova menssagem</h1>
+                                                <div style="margin: 5px auto;" class="barra"></div>
+                                                <form id="form-new-menssagem">
+                                                    <input placeholder="Digite a descrição da menssagem" name="descricao" type="text" id="frm_descricao" class="normal_input">
+                                                    <input placeholder="Digite a função da menssagem" name="funcao" type="text" id="frm_funcao" class="normal_input">
+                                                    <textarea placeholder="Digite o corpo da menssagem" name="menssagem" type="text" id="frm_menssagem" class="normal_input"></textarea>
+                                                    <button type="button" class="login_button" onclick="cadastrarMenssagem()">Cadastrar</button>
+                                                </form>
+                                            `;
+                    break;
+
+                    case 'u':
+                        section.innerHTML = `
+                                                <h1 style="height: 39px;">Cadastrando uma novo usuário</h1>
+                                                <div style="margin: 5px auto;" class="barra"></div>
+                                                <form id="form-new-user">
+                                                    <input placeholder="Digite o nome do usuário" name="username" type="text" id="frm_username" class="normal_input">
+                                                    <input placeholder="Digite a senha do usuário" name="password" type="password" id="frm_password" class="normal_input">
+                                                    <button type="button" class="login_button" onclick="cadastrarUsuario()">Cadastrar</button>
+                                                </form>
+                                            `;
+                    break;
+                    
+                    case 'c':
+                    section.innerHTML = `
+                                                <h1 style="height: 39px;">Cadastrando uma novo Contato</h1>
+                                                <div style="margin: 5px auto;" class="barra"></div>
+                                                <form id="form-new-contato">
+                                                    <input placeholder="Digite o nome do contato" name="nome" type="text" id="frm_nome" class="normal_input">
+                                                    <input placeholder="Digite o telefone do contato" name="telefone" type="tel" id="frm_contato" class="normal_input">
+                                                    <button type="button" class="login_button" onclick="cadastrarContato()">Cadastrar</button>
+                                                </form>
+                                            `;
+                    break;
+                
+                    case 's':
+                        section.innerHTML = `
+                                                    <h1 style="height: 39px;">Enviando uma menssagem</h1>
+                                                    <div style="margin: 5px auto;" class="barra"></div>`;
+                        var form = document.createElement("form");
+                        form.setAttribute("id", "form-envio-msg");
+                        for(let item of JSON.parse(_contatos))
+                        {
+                            let input = document.createElement("input");
+                            input.setAttribute("class","normal_checkbox");
+                            input.setAttribute("type","checkbox");
+                            input.setAttribute("name", "cb_"+item.nome);
+                            input.setAttribute("id", "cb_"+item.nome);
+                            input.setAttribute("value", item.telefone);
+                            
+                            let label = document.createElement("label");
+                            label.setAttribute("for","cb_"+item.nome);
+                            label.innerText = item.nome;
+
+                            let div = document.createElement("div")
+                            div.setAttribute("class","div-checkbox");
+
+                            div.appendChild(input);
+                            div.appendChild(label);
+
+                            form.appendChild(div)
+                        }
+
+                        let button = document.createElement("button");
+                        button.setAttribute("type","button");
+                        button.setAttribute("class","login_button");
+                        button.innerText = "Enviar";
+                        button.setAttribute("onclick", "enviarMenssagem(null)")
+
+                        form.appendChild(button);             
+                    break;
+                }
+                document.body.appendChild(section)
+                section.appendChild(form);     
+            }
+            
+            function cadastrarMenssagem()
+            {
+                let form = document.forms["form-new-menssagem"];
+                content = `{"descricao": "${form.elements.descricao.value}", "funcao": "${form.elements.funcao.value}", "mensagem": "${form.elements.menssagem.value}"}`;
+                console.log(content)
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", window.location.href+'menssagens', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() 
+                {
+                    if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                    {
+                        loadFeature('m');   
+                    }
+                };
+                xhr.send(content);
+            }
+            
+            function cadastrarUsuario()
+            {
+                let form = document.forms["form-new-user"];
+                content = `{"username": "${form.elements.username.value}", "password": "${form.elements.password.value}"}`;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", window.location.href+'usuarios', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() 
+                {
+                    if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                    {
+                        loadFeature('u');   
+                    }
+                };
+                xhr.send(content);
+            }
+            
+            function excluirUsuario(id)
+            {
+                console.log("excluir "+id);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", window.location.href+'usuarios/excluir/'+id, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() 
+                {
+                    if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                    {
+                        loadFeature('u');
+                    }
+                };
+                xhr.send();
+            }
+            
+            function cadastrarContato()
+            {
+                let form = document.forms["form-new-contato"];
+                content = `{"nome": "${form.elements.nome.value}", "telefone": "${form.elements.telefone.value}"}`;
+                console.log(content)
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", window.location.href+'contatos', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() 
+                {
+                    if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                    {
+                        loadFeature('c');   
+                    }
+                };
+                xhr.send(content);
+            }
+            
+            function excluirContato(id)
+            {
+                console.log("excluir "+id);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", window.location.href+'contatos/excluir/'+id, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() 
+                {
+                    if (this.readyState == XMLHttpRequest.DONE && this.status == 200 && this.response) 
+                    {
+                        loadFeature('c');
+                    }
+                };
+                xhr.send();
+            }
+            
+            async function clearElement(id)
+            {
+                let comp = document.getElementById(id);
+                var child = comp.lastElementChild; 
+                while (child) 
+                {
+                    comp.removeChild(child);
+                    child = comp.lastElementChild;
+                }
+            }
+
+            init()
+        </script>
+    </body>
+</html>
