@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from starlette.requests import Request
-
 from engine import *
-
 
 app = FastAPI()
 
