@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-from contextlib import nullcontext
 from selenium import webdriver
 import time
 from webdriver_manager.chrome import ChromeDriverManager
@@ -9,7 +7,7 @@ from selenium.webdriver.common.by import By
 class Bot:
     contatos = []
     mensagem = ""
-    driver = NULL
+    driver = None
 
     def __init__(contatos, mensagem):
         try:

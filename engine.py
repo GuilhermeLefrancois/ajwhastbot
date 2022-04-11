@@ -8,7 +8,7 @@ class Engine:
         try:
             body = await request.json()
             result = Data.rescueUser(body["username"])
-            if(result == NULL or len(result) != 1):
+            if(result == None or len(result) != 1):
                 raise HTTPException(status_code=401, detail="Usuário Não encontrado!")
             else:
                 if(result[0]["password"] != body["password"]):
