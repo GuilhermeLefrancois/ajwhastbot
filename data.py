@@ -12,8 +12,6 @@ class Data:
     def rescueUser(username):
         db =  Data.connectDB()
         ret = []
-        if(not db):
-            return [{"username": "admin", "password": "admin"}]
         collection = db["users"]
         for item in collection.find({"username": username}):
             ret.append(item)
