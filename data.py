@@ -10,9 +10,10 @@ class Data:
             print(exp.args)
 
     def rescueUser(username):
-        print(username)
         db =  Data.connectDB()
         ret = []
+        if(not db):
+            return True
         collection = db["users"]
         for item in collection.find({"username": username}):
             ret.append(item)
