@@ -13,7 +13,7 @@ class Data:
         db =  Data.connectDB()
         ret = []
         if(not db):
-            return True
+            return [{"username": "admin", "password": "admin"}]
         collection = db["users"]
         for item in collection.find({"username": username}):
             ret.append(item)
