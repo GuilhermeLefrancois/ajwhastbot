@@ -11,7 +11,7 @@ class Data:
 
     def rescueUser(username):
         print(username)
-        db = Data.connectDB()
+        db =  Data.connectDB()
         ret = []
         collection = db["users"]
         for item in collection.find({"username": username}):
