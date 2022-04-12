@@ -10,6 +10,7 @@ class Data:
             print(exp.args)
 
     def rescueUser(username):
+        print(username)
         db = Data.connectDB()
         ret = []
         collection = db["users"]
