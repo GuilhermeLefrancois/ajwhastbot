@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 class Data:
     def connectDB():
         try:
-            client = MongoClient('mongodb+srv://sa:200021@aj-wb.hghht.mongodb.net/ajdb?retryWrites=true&w=majority&ssl=true')
+            client = MongoClient("mongodb+srv://sa:200021@aj-wb.hghht.mongodb.net/ajdb?retryWrites=true&w=majority&ssl=true")
             return client["ajdb"]
         except Exception as exp:
             print(exp.args)
